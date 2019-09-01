@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: salamantex
+      POSTGRES_PASSWORD: 1234
+
+  redis:
+    image: redis:latest
+    restart: always
+
+  backend:
+    depends_on:
+      - redis
+      - postgres
+    restart: always
+    ports:
+      - 8080:8080
+    build: .

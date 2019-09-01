@@ -1,0 +1,11 @@
+jwt_secret: "yQi8nwJ117nLHZPSUwaH"
+
+postgres:
+  host: postgres
+  user: postgres
+  pass: 1234
+  db: salamantex
+
+redis:
+  address: redis:6379
+  tx_queue: tx_queue

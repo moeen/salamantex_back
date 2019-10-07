@@ -38,6 +38,7 @@ func ProcessTransaction(txString string) {
 		if tx.Amount > sourceUser.BitcoinBalance {
 			tx.State = constants.Rejected
 		} else {
+			tx.State = constants.Approved
 			sourceUser.BitcoinBalance = sourceUser.BitcoinBalance - tx.Amount
 			targetUser.BitcoinBalance = targetUser.BitcoinBalance + tx.Amount
 		}
@@ -45,11 +46,11 @@ func ProcessTransaction(txString string) {
 		if tx.Amount > sourceUser.EthereumBalance {
 			tx.State = constants.Rejected
 		} else {
+			tx.State = constants.Approved
 			sourceUser.EthereumBalance = sourceUser.EthereumBalance - tx.Amount
 			targetUser.EthereumBalance = targetUser.EthereumBalance + tx.Amount
 		}
 	}
-	tx.State = constants.Approved
 	now := time.Now()
 	tx.Processed = &now
 

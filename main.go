@@ -25,7 +25,7 @@ func main() {
 	go server.InitServer()
 
 	for {
-		tx, err := r.GetRedis().LPop(config.GetConfig().Redis.TxQueue).Result()
+		tx, err := r.GetRedis().RPop(config.GetConfig().Redis.TxQueue).Result()
 
 		if err != nil && err != redis.Nil {
 			log.Println(err)
